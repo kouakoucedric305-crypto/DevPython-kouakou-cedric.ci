@@ -1,0 +1,104 @@
+{% extends 'core/base.html' %}
+{% block titre %}Équipe{% endblock %}
+{% block contenu %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Notre Équipe</h1>
+    <p>Des experts passionnés qui donnent vie à vos projets</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="py-20 bg-white">
+  <div class="container" style="max-width:56rem;text-align:center">
+    <h2 style="font-size:clamp(1.875rem,3vw,2.25rem);font-weight:700;margin-bottom:1.5rem">L'excellence par le talent</h2>
+    <p style="font-size:1.25rem;color:#6b7280">Notre équipe multidisciplinaire réunit les meilleurs talents du digital. Développeurs, designers, chefs de projet et stratèges travaillent ensemble pour créer des solutions exceptionnelles.</p>
+  </div>
+</section>
+
+<!-- GRILLE ÉQUIPE -->
+<section class="py-20 bg-gray50">
+  <div class="container">
+    <div class="team-grid">
+      {% for membre in equipe %}
+      <div class="team-card">
+        <div class="team-card-photo">
+          {% if membre.photo %}
+          <img src="{{ membre.photo.url }}" alt="{{ membre.nom_complet }}">
+          {% else %}
+          <div class="team-card-avatar">{{ membre.prenom|first }}{{ membre.nom|first }}</div>
+          {% endif %}
+        </div>
+        <div class="team-card-body">
+          <h3>{{ membre.nom_complet }}</h3>
+          <div class="team-card-role">{{ membre.poste }}</div>
+          <p class="team-card-bio">{{ membre.bio }}</p>
+          <div class="team-social">
+            {% if membre.linkedin %}<a href="{{ membre.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>{% endif %}
+            {% if membre.twitter %}<a href="{{ membre.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+            {% if membre.github %}<a href="{{ membre.github }}" target="_blank"><i class="fab fa-github"></i></a>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <!-- Membres de démo -->
+      {% for m in demo_equipe %}
+      <div class="team-card">
+        <div class="team-card-photo">
+          <img src="{{ m.img }}" alt="{{ m.nom }}" onerror="this.parentElement.innerHTML='<div class=team-card-avatar>{{ m.initiales }}</div>'">
+        </div>
+        <div class="team-card-body">
+          <h3>{{ m.nom }}</h3>
+          <div class="team-card-role">{{ m.role }}</div>
+          <p class="team-card-bio">{{ m.bio }}</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="py-20 bg-white">
+  <div class="container">
+    <div class="section-header">
+      <h2>Notre Culture</h2>
+      <p>Un environnement stimulant où l'innovation et la collaboration sont au cœur de notre réussite</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card">
+        <div class="feature-icon" style="font-size:1.75rem">🚀</div>
+        <h3>Innovation</h3>
+        <p>Nous encourageons la créativité et l'expérimentation pour repousser les limites</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="font-size:1.75rem">🤝</div>
+        <h3>Collaboration</h3>
+        <p>Le travail d'équipe et le partage de connaissances sont essentiels</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="font-size:1.75rem">🌱</div>
+        <h3>Croissance</h3>
+        <p>Nous investissons dans le développement professionnel de chacun</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REJOINDRE -->
+<section class="join-section">
+  <div class="container" style="max-width:56rem;text-align:center">
+    <h2>Rejoignez l'aventure</h2>
+    <p>Nous recherchons constamment des talents passionnés pour renforcer notre équipe</p>
+    <a href="mailto:careers@monentreprise.fr" class="btn btn-white">Voir les offres d'emploi</a>
+  </div>
+</section>
+
+{% endblock %}

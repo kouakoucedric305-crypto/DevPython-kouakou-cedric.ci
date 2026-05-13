@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+{% block titre %}Services{% endblock %}
+{% block contenu %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Nos Services</h1>
+    <p>Des solutions complètes pour répondre à tous vos besoins digitaux</p>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container">
+    <div class="services-grid">
+      {% for service in services %}
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas {{ service.icone }}"></i></div>
+        <h3>{{ service.titre }}</h3>
+        <p>{{ service.description_longue }}</p>
+        {% if service.fonctionnalites %}
+        <ul class="service-features">
+          {% for f in service.fonctionnalites.splitlines %}
+          {% if f.strip %}<li><span class="dot"></span>{{ f.strip }}</li>{% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% empty %}
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas fa-code"></i></div>
+        <h3>Développement Web</h3>
+        <p>Applications web sur mesure, performantes et évolutives.</p>
+        <ul class="service-features">
+          <li><span class="dot"></span>React, Vue, Angular</li>
+          <li><span class="dot"></span>Node.js, Python, PHP</li>
+          <li><span class="dot"></span>API REST &amp; GraphQL</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas fa-palette"></i></div>
+        <h3>Design UI/UX</h3>
+        <p>Des interfaces intuitives et attrayantes qui captivent vos utilisateurs.</p>
+        <ul class="service-features">
+          <li><span class="dot"></span>Design system</li>
+          <li><span class="dot"></span>Prototypage interactif</li>
+          <li><span class="dot"></span>Design responsive</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Applications Mobile</h3>
+        <p>Applications natives et cross-platform pour iOS et Android.</p>
+        <ul class="service-features">
+          <li><span class="dot"></span>React Native</li>
+          <li><span class="dot"></span>Flutter</li>
+          <li><span class="dot"></span>Progressive Web Apps</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Marketing Digital</h3>
+        <p>Stratégies digitales complètes pour augmenter votre visibilité.</p>
+        <ul class="service-features">
+          <li><span class="dot"></span>SEO &amp; SEA</li>
+          <li><span class="dot"></span>Social Media</li>
+          <li><span class="dot"></span>Analytics &amp; reporting</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas fa-search"></i></div>
+        <h3>Conseil &amp; Stratégie</h3>
+        <p>Accompagnement stratégique pour votre transformation digitale.</p>
+        <ul class="service-features">
+          <li><span class="dot"></span>Audit digital</li>
+          <li><span class="dot"></span>Roadmap produit</li>
+          <li><span class="dot"></span>Formation équipes</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cybersécurité</h3>
+        <p>Protection de vos données et de vos systèmes contre les menaces.</p>
+        <ul class="service-features">
+          <li><span class="dot"></span>Audit de sécurité</li>
+          <li><span class="dot"></span>Conformité RGPD</li>
+          <li><span class="dot"></span>Tests d'intrusion</li>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="py-20 bg-gray50">
+  <div class="container">
+    <div class="section-header">
+      <h2>Notre Processus</h2>
+      <p>Une méthodologie éprouvée pour garantir le succès de votre projet</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step"><div class="step-circle">1</div><h3>Découverte</h3><p>Analyse de vos besoins et définition des objectifs</p></div>
+      <div class="process-step"><div class="step-circle">2</div><h3>Planification</h3><p>Stratégie détaillée et roadmap du projet</p></div>
+      <div class="process-step"><div class="step-circle">3</div><h3>Développement</h3><p>Création et itérations avec feedback régulier</p></div>
+      <div class="process-step"><div class="step-circle">4</div><h3>Lancement</h3><p>Déploiement et support continu</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container" style="max-width:56rem;text-align:center">
+    <h2>Discutons de votre projet</h2>
+    <p>Notre équipe est prête à transformer vos idées en réalité</p>
+    <a href="{% url 'contact' %}" class="btn btn-white">Contactez-nous</a>
+  </div>
+</section>
+{% endblock %}

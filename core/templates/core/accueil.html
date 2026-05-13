@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+{% block titre %}Accueil{% endblock %}
+{% block contenu %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div style="max-width:48rem">
+      <h1>{{ hero.titre|default:"Transformez vos idées en solutions innovantes" }}</h1>
+      <p>{{ hero.sous_titre|default:"Nous accompagnons les entreprises dans leur transformation digitale avec expertise et passion." }}</p>
+      <div class="hero-actions">
+        <a href="{% url 'contact' %}" class="btn btn-white">Commencer maintenant <i class="fas fa-arrow-right"></i></a>
+        <a href="{% url 'services' %}" class="btn btn-outline-white">Découvrir nos services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-20 bg-white">
+  <div class="container">
+    <div class="section-header">
+      <h2>Pourquoi nous choisir ?</h2>
+      <p>Des solutions sur mesure qui propulsent votre entreprise vers le succès</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Rapidité</h3>
+        <p>Des projets livrés dans les délais avec une qualité exceptionnelle</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <h3>Expertise</h3>
+        <p>Une équipe de professionnels passionnés et expérimentés</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Croissance</h3>
+        <p>Des solutions évolutives qui grandissent avec votre entreprise</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Projets réalisés</div></div>
+      <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">Clients satisfaits</div></div>
+      <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Années d'expérience</div></div>
+      <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Experts</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="py-20 bg-white">
+  <div class="container">
+    <div class="benefits-grid">
+      <div>
+        <h2 style="font-size:clamp(1.875rem,3vw,2.25rem);font-weight:700;margin-bottom:1.5rem">Des résultats qui parlent d'eux-mêmes</h2>
+        <ul class="benefits-list">
+          <li><i class="fas fa-check-circle check-icon"></i><span>Augmentation moyenne de 200% du ROI pour nos clients</span></li>
+          <li><i class="fas fa-check-circle check-icon"></i><span>Méthodologie agile pour une flexibilité maximale</span></li>
+          <li><i class="fas fa-check-circle check-icon"></i><span>Support et maintenance 24/7 pour votre tranquillité d'esprit</span></li>
+          <li><i class="fas fa-check-circle check-icon"></i><span>Technologies de pointe pour des solutions pérennes</span></li>
+        </ul>
+      </div>
+      <div class="years-box">
+        <div class="big-number">10 ans</div>
+        <p>D'excellence et d'innovation dans le domaine digital</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="max-width:56rem;text-align:center">
+    <h2>Prêt à transformer votre entreprise ?</h2>
+    <p>Contactez-nous dès aujourd'hui pour discuter de votre projet</p>
+    <a href="{% url 'contact' %}" class="btn btn-white">Demander un devis gratuit <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+{% endblock %}

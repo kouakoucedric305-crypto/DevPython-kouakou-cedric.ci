@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+{% block titre %}Contact{% endblock %}
+{% block contenu %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Contactez-nous</h1>
+    <p>Parlons de votre projet. Je suis prêt à vous accompagner</p>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORMULAIRE -->
+      <div class="contact-form-col">
+        <h2>Envoyez-nous un message</h2>
+        <p>Remplissez le formulaire ci-dessous et je vous répondrai dans les plus brefs délais.</p>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" style="margin-bottom:1rem;">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <form method="POST" class="contact-form">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nom complet *</label>
+              {{ formulaire.nom }}
+              {% if formulaire.nom.errors %}<ul class="form-errors">{% for e in formulaire.nom.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              {{ formulaire.email }}
+              {% if formulaire.email.errors %}<ul class="form-errors">{% for e in formulaire.email.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Entreprise</label>
+              {{ formulaire.entreprise }}
+            </div>
+            <div class="form-group">
+              <label>Téléphone</label>
+              {{ formulaire.telephone }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service souhaité *</label>
+            {{ formulaire.service_souhaite }}
+            {% if formulaire.service_souhaite.errors %}<ul class="form-errors">{% for e in formulaire.service_souhaite.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            {{ formulaire.message }}
+            {% if formulaire.message.errors %}<ul class="form-errors">{% for e in formulaire.message.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+          <button type="submit" class="btn btn-blue btn-full">Envoyer le message</button>
+        </form>
+      </div>
+
+      <!-- INFOS CONTACT -->
+      <div class="contact-info-col">
+        <h2>Informations de contact</h2>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h3>Adresse</h3><p>Côte d'Ivoire<br>Abidjan, Grand Bassam</p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+            <div><h3>Téléphone</h3><p><a href="tel:+2250789811292">07 89 81 12 92</a></p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+            <div><h3>Email</h3><p><a href="mailto:kouakou.cedric305@gmail.com">kouakou.cedric305@gmail.com</a></p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+            <div><h3>Horaires</h3><p>Lundi - Vendredi: 8h00 - 18h00<br>Samedi: 9h00 - 13h00<br>Dimanche: Fermé</p></div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Abidjan — Grand Bassam, Côte d'Ivoire</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUREAU -->
+<section class="py-20 bg-gray50">
+  <div class="container">
+    <div class="section-header">
+      <h2>Notre Bureau</h2>
+      <p>Basé en Côte d'Ivoire pour mieux vous servir</p>
+    </div>
+    <div class="offices-grid" style="justify-content:center;">
+      <div class="office-card">
+        <h3>Abidjan — Grand Bassam</h3>
+        <p>Côte d'Ivoire<br>
+           <i class="fas fa-phone"></i> 07 89 81 12 92<br>
+           <i class="fas fa-envelope"></i> kouakou.cedric305@gmail.com
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

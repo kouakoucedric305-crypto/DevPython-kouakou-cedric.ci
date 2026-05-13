@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titre %}MonEntreprise{% endblock %} | Kouakou Cedric</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  {% block css_extra %}{% endblock %}
+</head>
+<body>
+
+{% if user.is_staff %}
+<div class="cms-edit-bar">
+  <strong>⚙️ Admin CMS</strong>
+  <a href="{% url 'admin:index' %}">Dashboard</a>
+  <a href="{% url 'admin:core_sitesettings_changelist' %}">Paramètres</a>
+  <a href="{% url 'admin:core_pageblock_changelist' %}">Blocs de contenu</a>
+  <a href="{% url 'admin:core_service_changelist' %}">Services</a>
+  <a href="{% url 'admin:core_projet_changelist' %}">Projets</a>
+  <a href="{% url 'admin:core_messagecontact_changelist' %}">Messages</a>
+</div>
+{% endif %}
+
+{% if messages %}
+<div class="messages-container">
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+    <button onclick="this.parentElement.remove()" class="close-btn">×</button>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<header class="navbar">
+  <div class="container">
+    <a href="{% url 'accueil' %}" class="navbar-brand">Kouakou Cedric</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{% url 'accueil' %}"  {% if request.resolver_match.url_name == 'accueil' %}class="active"{% endif %}>Accueil</a></li>
+      <li><a href="{% url 'a_propos' %}" {% if request.resolver_match.url_name == 'a_propos' %}class="active"{% endif %}>À propos</a></li>
+      <li><a href="{% url 'services' %}" {% if request.resolver_match.url_name == 'services' %}class="active"{% endif %}>Services</a></li>
+      <li><a href="{% url 'portfolio' %}" {% if request.resolver_match.url_name == 'portfolio' %}class="active"{% endif %}>Portfolio</a></li>
+      <li><a href="{% url 'contact' %}"  {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="container">
+    <nav class="nav-mobile" id="navMobile">
+      <a href="{% url 'accueil' %}"  {% if request.resolver_match.url_name == 'accueil' %}class="active"{% endif %}>Accueil</a>
+      <a href="{% url 'a_propos' %}" {% if request.resolver_match.url_name == 'a_propos' %}class="active"{% endif %}>À propos</a>
+      <a href="{% url 'services' %}" {% if request.resolver_match.url_name == 'services' %}class="active"{% endif %}>Services</a>
+      <a href="{% url 'portfolio' %}" {% if request.resolver_match.url_name == 'portfolio' %}class="active"{% endif %}>Portfolio</a>
+      <a href="{% url 'contact' %}"  {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>{% block contenu %}{% endblock %}</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Kouakou Cedric</div>
+        <p class="footer-desc">Solutions digitales innovantes pour votre entreprise. Je transforme vos idées en réalité.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Liens rapides</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'accueil' %}">Accueil</a></li>
+          <li><a href="{% url 'a_propos' %}">À propos</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Nos Services</h4>
+        <ul class="footer-links">
+          <li>Développement Web</li>
+          <li>Design UI/UX</li>
+          <li>Marketing Digital</li>
+          <li>Conseil Stratégique</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-contact">
+          <li><i class="fas fa-map-marker-alt"></i><span>Côte d'Ivoire<br>Abidjan, Grand Bassam</span></li>
+          <li><i class="fas fa-phone"></i><span>07 89 81 12 92</span></li>
+          <li><i class="fas fa-envelope"></i><span>kouakou.cedric305@gmail.com</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; {% now "Y" %} Kouakou Cedric. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script src="{% static 'core/js/main.js' %}"></script>
+{% block js_extra %}{% endblock %}
+</body>
+</html>

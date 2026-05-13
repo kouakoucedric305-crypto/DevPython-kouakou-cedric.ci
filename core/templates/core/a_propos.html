@@ -1,0 +1,102 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block titre %}À propos{% endblock %}
+{% block contenu %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>À propos de nous</h1>
+    <p>Passionné par la technologie et le digital, au service de votre réussite</p>
+  </div>
+</section>
+
+<!-- PHOTO & PRÉSENTATION -->
+<section class="py-20 bg-white">
+  <div class="container">
+    <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:3rem;">
+      <img src="{% static 'core/images/cedric.jpeg' %}"
+           alt="Kouakou Cedric"
+           style="width:220px; height:280px; object-fit:cover; object-position:top;
+                  border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,0.15);
+                  margin-bottom:1rem;">
+      <h2 style="font-size:1.6rem; font-weight:700; color:#1e293b; margin:0.5rem 0 0.2rem;">Kouakou Cedric</h2>
+      <p style="color:#64748b; font-size:1rem; margin:0;">Fondateur & Développeur</p>
+    </div>
+    <div class="story-grid">
+      <div class="story-text">
+        <h2>Notre Histoire</h2>
+        <p>Fondée avec passion pour la technologie et l'innovation, notre mission est simple : aider les entreprises à exploiter le plein potentiel du digital.</p>
+        <p>Au fil des années, nous avons grandi pour devenir un acteur incontournable dans le domaine de la transformation digitale, tout en conservant nos valeurs fondamentales : excellence, innovation et proximité client.</p>
+        <p>Aujourd'hui, nous sommes fiers d'accompagner nos clients à travers toute la Côte d'Ivoire dans leur parcours digital.</p>
+      </div>
+      <div class="year-box">
+        <div class="big-year">2011</div>
+        <p>Année de création</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALEURS -->
+<section class="py-20 bg-gray50">
+  <div class="container">
+    <div class="section-header">
+      <h2>Nos Valeurs</h2>
+      <p>Les principes qui guident notre travail au quotidien</p>
+    </div>
+    <div class="grid-4">
+      <div class="value-card">
+        <div class="feature-icon" style="margin:0 auto 1rem"><i class="fas fa-bullseye"></i></div>
+        <h3>Excellence</h3>
+        <p>Nous visons l'excellence dans chaque projet, du début à la fin</p>
+      </div>
+      <div class="value-card">
+        <div class="feature-icon" style="margin:0 auto 1rem"><i class="fas fa-eye"></i></div>
+        <h3>Innovation</h3>
+        <p>Toujours à la pointe des nouvelles technologies et tendances</p>
+      </div>
+      <div class="value-card">
+        <div class="feature-icon" style="margin:0 auto 1rem"><i class="fas fa-award"></i></div>
+        <h3>Qualité</h3>
+        <p>Des standards élevés pour des résultats qui dépassent les attentes</p>
+      </div>
+      <div class="value-card">
+        <div class="feature-icon" style="margin:0 auto 1rem"><i class="fas fa-heart"></i></div>
+        <h3>Passion</h3>
+        <p>Une équipe passionnée qui aime relever les défis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="py-20 bg-white">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-box">
+        <h2>Notre Mission</h2>
+        <p>Accompagner les entreprises ivoiriennes dans leur transformation digitale en leur fournissant des solutions innovantes, performantes et sur mesure. Nous croyons que la technologie doit être un levier de croissance accessible à tous.</p>
+      </div>
+      <div class="mission-box">
+        <h2>Notre Vision</h2>
+        <p>Devenir le partenaire de référence pour la transformation digitale en Côte d'Ivoire, reconnu pour notre excellence technique, notre approche humaine et notre capacité à créer de la valeur durable pour nos clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="py-20 bg-gray50">
+  <div class="container">
+    <h2 class="timeline-title">Notre Parcours</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">2011</div><div class="timeline-content"><h3>Création de l'entreprise</h3><p>Lancement avec une vision claire du digital en Côte d'Ivoire</p></div></div>
+      <div class="timeline-item"><div class="timeline-year">2015</div><div class="timeline-content"><h3>Premiers grands projets</h3><p>Accompagnement de clients majeurs à Abidjan</p></div></div>
+      <div class="timeline-item"><div class="timeline-year">2019</div><div class="timeline-content"><h3>Expansion régionale</h3><p>Présence renforcée à Grand Bassam et dans les communes d'Abidjan</p></div></div>
+      <div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-content"><h3>100+ projets réalisés</h3><p>Une étape majeure dans notre croissance</p></div></div>
+      <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-content"><h3>Leader local du digital</h3><p>Référence en transformation digitale en Côte d'Ivoire</p></div></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

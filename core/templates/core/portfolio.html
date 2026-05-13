@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% block titre %}Portfolio{% endblock %}
+{% block contenu %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Notre Portfolio</h1>
+    <p>Découvrez nos réalisations et les projets qui ont fait notre réputation</p>
+  </div>
+</section>
+
+<!-- STATS PORTFOLIO -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Projets réalisés</div></div>
+      <div class="stat-item"><div class="stat-number">350+</div><div class="stat-label">Clients satisfaits</div></div>
+      <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Prix remportés</div></div>
+      <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">Taux de satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GRILLE PROJETS -->
+<section class="py-20 bg-gray50">
+  <div class="container">
+    <div class="portfolio-grid">
+      {% for projet in projets %}
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          {% if projet.image %}
+          <img src="{{ projet.image.url }}" alt="{{ projet.titre }}">
+          {% else %}
+          <div class="portfolio-placeholder"><i class="fas fa-code"></i></div>
+          {% endif %}
+          <div class="portfolio-overlay">
+            <i class="fas fa-external-link-alt portfolio-overlay-icon"></i>
+          </div>
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-category">{{ projet.categorie|default:"Développement Web" }}</div>
+          <h3>{{ projet.titre }}</h3>
+          <p>{{ projet.description|truncatewords:20 }}</p>
+          <div class="portfolio-tags">
+            {% for tech in projet.technologies.split %}
+            <span class="tag">{{ tech|cut:"," }}</span>
+            {% endfor %}
+          </div>
+          <div class="portfolio-client">Client : <strong>{{ projet.client }}</strong></div>
+        </div>
+      </div>
+      {% empty %}
+      <!-- Projets de démo si la BDD est vide -->
+      {% for demo in demo_projets %}
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="{{ demo.img }}" alt="{{ demo.titre }}" onerror="this.parentElement.innerHTML='<div class=portfolio-placeholder><i class=fas fa-code></i></div>'">
+          <div class="portfolio-overlay"><i class="fas fa-external-link-alt portfolio-overlay-icon"></i></div>
+        </div>
+        <div class="portfolio-card-body">
+          <div class="portfolio-category">{{ demo.cat }}</div>
+          <h3>{{ demo.titre }}</h3>
+          <p>{{ demo.desc }}</p>
+          <div class="portfolio-tags">{% for t in demo.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+          <div class="portfolio-client">Client : <strong>{{ demo.client }}</strong></div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGE -->
+<section class="py-20 bg-white">
+  <div class="container" style="max-width:56rem">
+    <div style="text-align:center">
+      <blockquote class="testimonial-quote">
+        "MonEntreprise a transformé notre vision en une plateforme exceptionnelle. Leur expertise technique et leur approche collaborative ont dépassé toutes nos attentes."
+      </blockquote>
+      <div class="testimonial-author" style="justify-content:center">
+        <div class="author-avatar-circle">JD</div>
+        <div style="text-align:left">
+          <div class="author-name">Jean Dupont</div>
+          <div class="author-role">CEO, TechStart</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
